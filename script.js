@@ -1,3 +1,6 @@
+//Mask
+$('#inputCep').mask('00000-000');
+
 let clientes = [
 {
     id: 1,
