@@ -25,8 +25,11 @@ let clientes = [
 carregarClientes(clientes);
 
 function salvar() {
+    novoCliente = pegarInfosCliente();
 
-    console.log(pegarInfosCliente());
+    addNovaLinha(novoCliente)
+    clientes.push(novoCliente);
+    document.getElementById('formClientes').reset();
 }
 
 function carregarClientes(listaClientes) {
@@ -36,11 +39,11 @@ function carregarClientes(listaClientes) {
 }
 
 function pegarInfosCliente() {
-    const clientInfos = 
+    const clienteInfos = 
     {   
         id: clientes.length + 1,
         nomeCompleto: $('#inputNome').val() + ' ' + $('#inputSobrenome').val(),
-        CEP: $('#inputCep').val(),
+        cep: $('#inputCep').val(),
         logradouro: $('#inputEndereco').val(),
         numero: $('#inputNumero').val(),
         bairro: $('#inputBairro').val(),
@@ -48,7 +51,7 @@ function pegarInfosCliente() {
         estado: $('#inputEstado').val(),
     }
 
-    return clientInfos;
+    return clienteInfos;
 }
 
 function addNovaLinha(cliente) {
