@@ -31,6 +31,12 @@ function pesquisarCEP() {
     let cep = $('#inputCep').val();
     let numCep = (cep) => cep.replace(/-/g, '');
     let url = `https:///viacep.com.br/ws/${numCep(cep)}/json`
+
+    if(numCep(cep).length != 8){
+        document.getElementById('erroCep').innerHTML = 'CEP inválido';
+            $('#localizacao input').val('');
+        exit(0);
+    }
     console.log(numCep(url));
     inserirDadosCep(url);
     
@@ -38,11 +44,18 @@ function pesquisarCEP() {
 
 function inserirDadosCep(url) {
     $.getJSON(url, (dados) => {
+        if(('erro' in dados)){
+            document.getElementById('erroCep').innerHTML = 'CEP não encontrado';
+            $('#localizacao input').val('');
+            exit(1);
+        }
+        
         document.getElementById('inputEndereco').value = dados.logradouro;
         document.getElementById('inputBairro').value = dados.bairro;
         document.getElementById('inputCidade').value = dados.localidade;
         document.getElementById('inputEstado').value = dados.estado;
-    })
+        document.getElementById('erroCep').innerHTML = '';
+    })  
 }
 
 function salvar() {
