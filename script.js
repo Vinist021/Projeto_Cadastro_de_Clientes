@@ -27,6 +27,24 @@ let clientes = [
 
 carregarClientes(clientes);
 
+function pesquisarCEP() {
+    let cep = $('#inputCep').val();
+    let numCep = (cep) => cep.replace(/-/g, '');
+    let url = `https:///viacep.com.br/ws/${numCep(cep)}/json`
+    console.log(numCep(url));
+    inserirDadosCep(url);
+    
+}
+
+function inserirDadosCep(url) {
+    $.getJSON(url, (dados) => {
+        document.getElementById('inputEndereco').value = dados.logradouro;
+        document.getElementById('inputBairro').value = dados.bairro;
+        document.getElementById('inputCidade').value = dados.localidade;
+        document.getElementById('inputEstado').value = dados.estado;
+    })
+}
+
 function salvar() {
     novoCliente = pegarInfosCliente();
 
@@ -89,5 +107,4 @@ function addNovaLinha(cliente) {
     //inserir estado
     estadoNode = document.createTextNode(cliente.estado);
     newRow.insertCell().appendChild(estadoNode);
-
 }
