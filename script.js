@@ -32,23 +32,13 @@ function pesquisarCEP() {
     let numCep = (cep) => cep.replace(/-/g, '');
     let url = `https:///viacep.com.br/ws/${numCep(cep)}/json`
 
-    if(numCep(cep).length != 8){
-        document.getElementById('erroCep').innerHTML = 'CEP inválido';
-            $('#localizacao input').val('');
-        exit(0);
-    }
-    console.log(numCep(url));
+    verificarValidadeCEP(numCep(cep)) ? '' : exit(1);
     inserirDadosCep(url);
-    
 }
 
 function inserirDadosCep(url) {
     $.getJSON(url, (dados) => {
-        if(('erro' in dados)){
-            document.getElementById('erroCep').innerHTML = 'CEP não encontrado';
-            $('#localizacao input').val('');
-            exit(1);
-        }
+        verificarExistenciaCEP(dados) ? '' : exit(1);
         
         document.getElementById('inputEndereco').value = dados.logradouro;
         document.getElementById('inputBairro').value = dados.bairro;
@@ -56,6 +46,27 @@ function inserirDadosCep(url) {
         document.getElementById('inputEstado').value = dados.estado;
         document.getElementById('erroCep').innerHTML = '';
     })  
+}
+
+function verificarValidadeCEP(cep) {
+    if(cep.length != 8){
+        document.getElementById('erroCep').innerHTML = 'CEP inválido';
+        $('#localizacao input').val('');
+        
+        return false;
+    }
+    else
+        return true;
+}
+
+function verificarExistenciaCEP(dadosCEP) {
+    if(('erro' in dadosCEP)){
+        document.getElementById('erroCep').innerHTML = 'CEP não encontrado';
+        $('#localizacao input').val('');
+        return false;
+    }
+    else
+        return true;
 }
 
 function salvar() {
