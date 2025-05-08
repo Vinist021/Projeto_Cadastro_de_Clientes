@@ -32,13 +32,21 @@ function pesquisarCEP() {
     let numCep = (cep) => cep.replace(/-/g, '');
     let url = `https:///viacep.com.br/ws/${numCep(cep)}/json`
 
-    verificarValidadeCEP(numCep(cep)) ? '' : exit(1);
+    verificarValidadeCEP(numCep(cep)) ? '' : (bloquearInputs(), exit(1));
     inserirDadosCep(url);
+}
+
+function liberarInputs() {
+    $("#inputNumero").prop("disabled", false);
+}
+
+function bloquearInputs() {
+    $("#inputNumero").prop("disabled", true);
 }
 
 function inserirDadosCep(url) {
     $.getJSON(url, (dados) => {
-        verificarExistenciaCEP(dados) ? '' : exit(1);
+        verificarExistenciaCEP(dados) ? liberarInputs() : (bloquearInputs(), exit(1));
         
         document.getElementById('inputEndereco').value = dados.logradouro;
         document.getElementById('inputBairro').value = dados.bairro;
@@ -70,11 +78,22 @@ function verificarExistenciaCEP(dadosCEP) {
 }
 
 function salvar() {
-    novoCliente = pegarInfosCliente();
+    if
+    (   document.getElementById('inputEndereco').value.trim() != '' &&
+        document.getElementById('inputNumero').value.trim() != '' &&
+        document.getElementById('inputBairro').value.trim() != '' &&
+        document.getElementById('inputCidade').value.trim() != '' &&
+        document.getElementById('inputEstado').value.trim() != ''
+    )
+    {
+        novoCliente = pegarInfosCliente();
 
-    addNovaLinha(novoCliente)
-    clientes.push(novoCliente);
-    document.getElementById('formClientes').reset();
+        addNovaLinha(novoCliente)
+        clientes.push(novoCliente);
+        document.getElementById('formClientes').reset();
+    } 
+    bloquearInputs();
+   
 }
 
 function carregarClientes(listaClientes) {
