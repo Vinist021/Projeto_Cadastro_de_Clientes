@@ -14,7 +14,7 @@
 
     <main>
         <div class="row mt-4">
-            <div class="rounded shadow col-7 mx-auto p-3">
+            <div class="rounded shadow col-xxl-7 col-lg-9 col-md-10 col-sm-12 mx-auto p-3">
                 <form onsubmit="salvar(); return false;" id="formClientes">
                     <div class="row">
                         <div class="mb-3 col-6">
@@ -26,7 +26,7 @@
                             <input type="text" class="form-control" id="inputSobrenome" required>
                             </div>
                         <div class="mb-3 col-4">
-                            <label for="inputCep" class="form-label">Pesquise pelo CEP</label>
+                            <label for="inputCep" class="form-label text-nowrap">Pesquise pelo CEP</label>
                             <input type="text" class="form-control" onblur="pesquisarCEP();" id="inputCep" required>                                                        
                         </div>
                         <div class="col-6 pt-3 mt-4 ps-1 text-danger" id="erroCep">
@@ -69,11 +69,11 @@
                               <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome Completo</th>
-                                <th scope="col">Endereço</th>
-                                <th scope="col">CEP</th>
-                                <th scope="col">Bairro</th>
-                                <th scope="col">Cidade</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col" class="d-none d-sm-table-cell">Endereço</th>
+                                <th scope="col" class="d-none d-sm-table-cell">CEP</th>
+                                <th scope="col" class="d-none d-xl-table-cell">Bairro</th>
+                                <th scope="col" class="d-none d-lg-table-cell">Cidade</th>
+                                <th scope="col" class="d-none d-md-table-cell">Estado</th>
                               </tr>
                             </thead>
                             <tbody>

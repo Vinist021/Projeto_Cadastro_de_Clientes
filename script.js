@@ -1,29 +1,7 @@
 //Mask
 $('#inputCep').mask('00000-000');
 
-let clientes = [
-{
-    id: 1,
-    nomeCompleto: 'José Silva',
-    cep: '18055-180',
-    logradouro: 'Alameda das Crisandálias',
-    numero: '160',
-    bairro: 'Jardim Simus',
-    cidade: 'Sorocaba',
-    estado: 'SP'
-},
-{
-    id: 2,
-    nomeCompleto: 'Maria Teixeira',
-    cep: '18055-180',
-    logradouro: 'Alameda das Crisandálias',
-    numero: '190',
-    bairro: 'Jardim Simus',
-    cidade: 'Sorocaba',
-    estado: 'SP'
-}
-
-];
+let clientes = [];
 //Carregar clientes já cadastrados
 carregarClientes(clientes);
 
@@ -160,20 +138,31 @@ function addNovaLinha(cliente) {
     logradouro = cliente.logradouro;
     numero = cliente.numero;
     enderecoNode = document.createTextNode(logradouro + ', ' + numero);
-    newRow.insertCell().appendChild(enderecoNode);
+    var cellEndereco = newRow.insertCell();
+    cellEndereco.className = 'd-none d-sm-table-cell';
+    cellEndereco.appendChild(enderecoNode);
+    
     //inserir cep
-    cepNode = document.createTextNode(cliente.cep);
-    newRow.insertCell().appendChild(cepNode);
+    var cepNode = document.createTextNode(cliente.cep);
+    var cellCep = newRow.insertCell();
+    cellCep.className ='d-none d-sm-table-cell';
+    cellCep.appendChild(cepNode);
 
     //inserir bairro
-    bairroNode = document.createTextNode(cliente.bairro);
-    newRow.insertCell().appendChild(bairroNode);
+    var bairroNode = document.createTextNode(cliente.bairro);
+    var cellBairro = newRow.insertCell();
+    cellBairro.className ='d-none d-xl-table-cell';
+    cellBairro.appendChild(bairroNode);
 
     //inserir cidade
-    cidadeNode = document.createTextNode(cliente.cidade);
-    newRow.insertCell().appendChild(cidadeNode);
+    var cidadeNode = document.createTextNode(cliente.cidade);
+    var cellCidade = newRow.insertCell();
+    cellCidade.className ='d-none d-lg-table-cell';
+    cellCidade.appendChild(cidadeNode);
 
     //inserir estado
-    estadoNode = document.createTextNode(cliente.estado);
-    newRow.insertCell().appendChild(estadoNode);
+    var cidadeNode = document.createTextNode(cliente.estado);
+    var cellCidade = newRow.insertCell();
+    cellCidade.className ='d-none d-md-table-cell';
+    cellCidade.appendChild(cidadeNode);
 }
