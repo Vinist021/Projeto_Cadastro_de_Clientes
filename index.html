@@ -17,44 +17,45 @@
             <div class="rounded shadow col-xxl-7 col-lg-9 col-md-10 col-sm-12 mx-auto p-3">
                 <form onsubmit="salvar(); return false;" id="formClientes">
                     <div class="row">
-                        <div class="mb-3 col-6">
+                        <div class="row">
+                            <div class="mb-3 col-12 col-sm-6">
                             <label for="inputNome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="inputNome" required>
                         </div>
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-12 col-sm-6">
                             <label for="inputSobrenome" class="form-label">Sobrenome</label>
                             <input type="text" class="form-control" id="inputSobrenome" required>
                             </div>
-                        <div class="mb-3 col-4">
+                        <div class="mb-3 col-6 col-sm-4">
                             <label for="inputCep" class="form-label text-nowrap">Pesquise pelo CEP</label>
                             <input type="text" class="form-control" onblur="pesquisarCEP();" id="inputCep" required>                                                        
                         </div>
                         <div class="col-6 pt-3 mt-4 ps-1 text-danger" id="erroCep">
-                            
+
+                        </div>
                         </div>
                         <div id="localizacao" class="row">
-                            <div class="mb-3 col-9">
+                            <div class="mb-3 col-12 col-sm-9 ">
                                 <label for="inputEndereco" class="form-label">Endereço</label>
                                 <input type="text" class="form-control" id="inputEndereco" required disabled>
                             </div>
-                            <div class="mb-3 col-3">
+                            <div class="mb-3 col-6 col-sm-3">
                                 <label for="inputNumero" class="form-label">Número</label>
                                 <input type="number" class="form-control" id="inputNumero" required disabled>
                             </div>
-                            <div class="mb-3 col-6">
+                            <div class="mb-3 col-12 col-sm-6">
                                 <label for="inputBairro" class="form-label">Bairro</label>
                                 <input type="text" class="form-control" id="inputBairro" required disabled>
                             </div>
-                            <div class="mb-3 col-6">
+                            <div class="mb-3 col-12 col-sm-6">
                                 <label for="inputCidade" class="form-label">Cidade</label>
                                 <input type="text" class="form-control" id="inputCidade" required disabled>
                             </div>
-                            <div class="mb-3 col-3">
+                            <div class="mb-3 col-12 col-sm-3">
                                 <label for="inputEstado" class="form-label">Estado</label>
                                 <input type="text" class="form-control" id="inputEstado" required disabled>
                             </div>
                         </div>
-                        
                     </div>
 
                     <div class="text-center">

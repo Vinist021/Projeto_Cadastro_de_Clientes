@@ -145,7 +145,7 @@ function addNovaLinha(cliente) {
     //inserir cep
     var cepNode = document.createTextNode(cliente.cep);
     var cellCep = newRow.insertCell();
-    cellCep.className ='d-none d-sm-table-cell';
+    cellCep.className ='d-none d-sm-table-cell text-nowrap';
     cellCep.appendChild(cepNode);
 
     //inserir bairro
