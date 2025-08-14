@@ -29,7 +29,7 @@ function inserirDadosCep(url) {
 
 function pegarUrlCEP() {
     numeroCep = pegarNumeroCep();
-    let url = `https:///viacep.com.br/ws/${numeroCep}/json`;
+    let url = `https://viacep.com.br/ws/${numeroCep}/json`;
     return url;
 }
 
